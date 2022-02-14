@@ -19,6 +19,8 @@ int main(int argc, const char * argv[]) {
     vector<string>::iterator it;
     int t,tk,person;
     string str;
+
+    int nLine = 1;
     while(cin>>t){
         int temp=t;
         while(t--){
@@ -37,8 +39,9 @@ int main(int argc, const char * argv[]) {
                 }
             }
         }
+        if(nLine++ > 1) cout<<endl;
         for(it=v.begin(); it!=v.end(); it++) cout<<*it<<" "<<m[*it]<<endl;
-        cout<<endl;
+        
         m.clear();
         v.clear();
         
