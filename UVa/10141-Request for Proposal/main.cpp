@@ -12,17 +12,20 @@ int main(){
     string str,final;
     float price=0;
     while(cin>>n>>p && n!=0 && p!=0){
+        cin.ignore();
+        if(loop>1)cout<<endl;
         cout<<"RFP #"<<loop++<<endl;
         float compliance = 1000.1;
-        for(int i=0; i<n; i++) getline(cin>> ws, str);
+        for(int i=0; i<n; i++) getline(cin, str);
         while(p--){
             string name;
-            getline(cin>>ws,name);
+            getline(cin,name);
             float d;
             int r;
             string s;
             cin>>d>>r;
-            for(int i=0; i<r; i++) getline(cin>>ws,s);
+            cin.ignore();
+            for(int i=0; i<r; i++) getline(cin,s);
             if(compliance>(float)n/r){
                 compliance = (float)n/r;
                 final = name;
@@ -36,7 +39,8 @@ int main(){
                 }
             }
         }
-        cout<<final<<endl<<endl;
+        
+        cout<<final<<endl;
     }
 
 return 0;
