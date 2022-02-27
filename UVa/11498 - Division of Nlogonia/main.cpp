@@ -4,7 +4,7 @@ using namespace std;
 typedef long long ll;
 typedef unsigned long ulong;
 
-void solve(int n, int m,int x, int y){
+void solve(int &n, int &m,int &x, int &y){
     if(x==n || y==m) cout<<"divisa\n";
     else if(x>n && y>m) cout<<"NE\n";
     else if(x<n && y>m) cout<<"NO\n";
