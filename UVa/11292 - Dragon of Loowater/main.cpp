@@ -27,6 +27,8 @@ int main(){
         }
         if(n>m){
             cout<<"Loowater is doomed!\n";
+            v1.clear();
+            v2.clear();
             continue;
         }
         sort(v2.begin(), v2.end());
@@ -37,7 +39,10 @@ int main(){
                 temp=1;
                 break;
             }
-            else sum += *it;
+            else{
+                sum += *it;
+                v2.erase(it);
+            }
         }
         if(temp==0) cout<<sum<<endl;
         v1.clear();
