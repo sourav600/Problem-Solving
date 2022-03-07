@@ -1,0 +1,27 @@
+Number of student: Enter all students Name Roll & GPA: 
+
+Before Sorting: 
+Name: Roll: GPA:
+sourav 15 3.75
+roman 2 2.5
+sadik 30 3.3
+emon 36 4
+josim 1 4
+rifat 50 5
+sabbir 26 4.78
+shuvo 32 4
+suhag 10 3.9
+nihal 90 10
+
+After sorting
+Name: Roll: GPA:
+nihal 90 10
+rifat 50 5
+sabbir 26 4.78
+emon 36 4
+shuvo 32 4
+josim 1 4
+suhag 10 3.9
+sourav 15 3.75
+sadik 30 3.3
+roman 2 2.5
