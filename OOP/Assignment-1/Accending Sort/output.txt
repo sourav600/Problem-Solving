@@ -1,0 +1,23 @@
+Number of total student: Enter all students roll & name: 
+Before sorting:
+18 mithu
+11 sakib
+17 shuvo
+13 rakib
+15 sourav
+25 sabbir
+6 ahad
+33 rifat
+15 poly
+1 josim
+After Sorting: 
+1 josim
+6 ahad
+11 sakib
+13 rakib
+15 sourav
+15 poly
+17 shuvo
+18 mithu
+25 sabbir
+33 rifat
