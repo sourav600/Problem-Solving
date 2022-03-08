@@ -2,6 +2,7 @@
 #include<string>
 #include<map>
 #include<set>
+#include <cctype>
 using namespace std;
 typedef long long ll;
 typedef unsigned long ulong;
@@ -23,10 +24,11 @@ int main(){
     string str;
     while(n--){
         getline(cin, str);
-
-        transform(str.begin(),str.end(),str.begin(),::toupper);
         for(int i=0; str[i]!='\0'; i++){
-            if(str[i]>='A' && str[i]<='Z') m[str[i]]++;
+            if(str[i]>='A' && str[i]<='Z' || str[i]>='a' && str[i]<='z') {
+                if(str[i]>='a' && str[i]<='z') str[i] -= 32;
+                m[str[i]]++;
+            }
         }
     }
     
@@ -34,7 +36,8 @@ int main(){
         ms[it->second].insert(it->first);
     }
     
-    auto cur_it = --ms.end();
+    auto cur_it = ms.end();
+    cur_it--;
     while(true){
         auto c = (*cur_it).second;
         auto count = (*cur_it).first;
