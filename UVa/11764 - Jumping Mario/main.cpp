@@ -9,6 +9,11 @@
 using namespace std;
 
 int main(int argc, const char * argv[]) {
+    #ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+    #endif
+    
     int t,n,arr[100],loop=1;
     cin>>t;
     while(t--){
