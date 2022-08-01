@@ -1,0 +1,27 @@
+valid notout 3
+invalid out 3
+valid out 0
+valid notout 6
+valid out 2
+valid out 0
+valid notout 1
+valid notout 6
+valid out 2
+valid notout 1
+valid notout 2
+valid notout 2
+valid out 2
+
+valid notout 2
+invalid out 3
+valid out 0
+valid notout 6
+valid out 2
+valid out 0
+valid notout 1
+valid notout 6
+valid out 2
+valid notout 1
+valid notout 2
+valid notout 2
+valid out 2

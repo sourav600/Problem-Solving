@@ -55,7 +55,7 @@ int main(){
     string str;
     int r;
     float g;
-    cout<<"Enter all students Name Roll & GPA: \n";
+    cout<<"Enter all students Name, Roll & GPA: \n";
     for(int i=0; i<n; i++){
         cin>>str>>r>>g;
         info[i] = students(str,r,g);

@@ -1,0 +1,61 @@
+Each Innings have 12 balls and 5 Wicket.
+Innings 1
+valid notout 3
+Ball 1, Score: 3/0
+invalid out 3
+Ball 1, Score: 7/0
+valid out 0
+Ball 2, Score: 7/1
+valid notout 6
+Ball 3, Score: 13/1
+valid out 2
+Ball 4, Score: 15/2
+valid out 0
+Ball 5, Score: 15/3
+valid notout 1
+Ball 6, Score: 16/3
+valid notout 6
+Ball 7, Score: 22/3
+valid out 2
+Ball 8, Score: 24/4
+valid notout 1
+Ball 9, Score: 25/4
+valid notout 2
+Ball 10, Score: 27/4
+valid notout 2
+Ball 11, Score: 29/4
+valid out 2
+Ball 12, Score: 31/5
+No ball left & All Batsman out. Innings 1 over.
+Total run for Innings 1: 31
+Innings 2
+valid notout 2
+Ball 1, Score: 2/0
+invalid out 3
+Ball 1, Score: 6/0
+valid out 0
+Ball 2, Score: 6/1
+valid notout 6
+Ball 3, Score: 12/1
+valid out 2
+Ball 4, Score: 14/2
+valid out 0
+Ball 5, Score: 14/3
+valid notout 1
+Ball 6, Score: 15/3
+valid notout 6
+Ball 7, Score: 21/3
+valid out 2
+Ball 8, Score: 23/4
+valid notout 1
+Ball 9, Score: 24/4
+valid notout 2
+Ball 10, Score: 26/4
+valid notout 2
+Ball 11, Score: 28/4
+valid out 2
+Ball 12, Score: 30/5
+No ball left & All Batsman out. Innings 2 over.
+Total run for Innings 2: 30
+
+Team A win by 1 Run
