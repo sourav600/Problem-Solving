@@ -1,4 +1,5 @@
 #include<bits/stdc++.h>
+#include<algorithm>
 using namespace std;
 #define nl '\n'
 #define For(i,n) for(int i=0; i<n; i++)
@@ -19,28 +20,17 @@ int main(){
     int n,h,m;
     while(t--){
         cin>>n>>h>>m;
-        if(h==0)h=24;
-        int sleep=((h-1)*60)+m;
-        int h1,m1,check=INT_MAX,H,M;
+        int sleep=(h*60)+m;
+        int h1,m1,time=INT_MAX;
         while(n--){
             cin>>h1>>m1;
-            if(h1==0) h1=24;
-            int alarm=((h1-1)*60)+m1;
-            int time;
-            if(sleep<=alarm) time=alarm-time;
-            else time = (1440-sleep)+alarm;
-            if(check>time){
-                H=h1; M=m1;
-                check=time;
-            }
+            
+            int alarm=(h1*60)+m1;
+            if(sleep<=alarm) time = min(time,alarm-sleep);
+            else time = min(time, (1440-(sleep-alarm)));
         }
-        cout<<H<<" "<<M<<nl;
-        int hour,min;
-        if(h<=H) hour=H-h;
-        else hour=H-h+24;
-        if(m<=M) min=M-m;
-        else{min=M-m+60; --hour;}
-        cout<<hour<<" "<<min<<nl;
+        cout<<time/60<<" "<<time%60<<nl;
+
     }
 return 0;
 }
