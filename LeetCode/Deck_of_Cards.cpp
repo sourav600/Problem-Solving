@@ -12,23 +12,29 @@ typedef long long ll;
 typedef unsigned long ulong;
 
 class Solution {
+    int gcd(int a, int b){
+        if(b==0) return a;
+        else return gcd(b,a%b);
+    }
 public:
     bool hasGroupsSizeX(vector<int>& deck) {
         unordered_map<int,int> m;
+        unordered_map<int,int>::iterator it;
         For(i,deck.size()) m[deck[i]]++;
-        if(m.size()>2) return false;
+        int gx=0;
+        if(m.size()<2) return false;
         else{
-            for(auto it=m.begin(); it!=m.end(); ++it){
-                if(it->second != ++it->second) return false;
-            }
-            return true;
+            for(it=m.begin(); it!=m.end(); ++it)
+                gx = gcd(gx,it->second);
+            if(gx==1) return false;
+            else return true;
         }
     }
 };
 int main(){
     #ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
+    freopen("../input.txt", "r", stdin);
+    freopen("../output.txt", "w", stdout);
     #endif
     vi v;
     int n;
