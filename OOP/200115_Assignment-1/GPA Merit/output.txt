@@ -1,4 +1,4 @@
-Number of student: Enter all students Name Roll & GPA: 
+Number of student: Enter all students Name, Roll & GPA: 
 
 Before Sorting: 
 Name: Roll: GPA:
