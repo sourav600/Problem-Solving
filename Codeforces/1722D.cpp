@@ -16,27 +16,30 @@ const ll M = 1000000007;
 void solve(int tc){
     ll n,sum=0; cin>>n;
     string s; cin>>s;
+    if(n==1){cout<<0<<nl; return;}
     vi L,R;
     For(i,n){
-        s[i]=='L'? L.pb(i): R.pb(i);
+        s[i]=='L'? L.pb(i+1): R.pb(i+1);
         if(s[i]=='L') sum += i;
         else sum += n-(i+1);
     }
-    cout<<"Sum1: "<<sum<<nl;
     int l=0,r=R.size()-1;
-    //cout<<R.size()<<nl;
+
     for(int i=0;i<n;++i){
-        if(L[l]<R[r]){
-            sum -= (L[l] + n-(R[r]+1));
-            cout<<"Sum2: "<<sum<<nl;
-            sum += n-L[l]+1;
-            cout<<"Sum3: "<<sum<<nl;
-            sum += R[r];
-            ++l; --r;
+        if(R[r]>(n/2) && L[l]>(n/2)){
+            if(L[l]<n-R[r]){
+                sum = (sum-i)+n-i-1;
+                l++;
+            }
+            else if(L[l]>n-R[r]){
+                sum = sum+i+n-i-1;
+                r--;
+            }
         }
-        cout<<sum<<" ";
+    cout<<sum<<" ";
     }
     cout<<nl;
+    L.clear(); R.clear();
 }
 
 int main(){
