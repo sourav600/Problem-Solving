@@ -1,7 +1,5 @@
 #include<bits/stdc++.h>
 using namespace std;
-typedef long long ll;
-typedef unsigned long ulong;
 #define nl '\n'
 #define For(i,n) for(int i=0; i<n; i++)
 #define vi vector<int>
@@ -11,28 +9,29 @@ typedef unsigned long ulong;
 #define umi unordered_map<int,int>
 #define pb(x) push_back(x)
 #define pi acos(-1)
+typedef long long ll;
+typedef unsigned long ulong;
 const ll M = 1000000007;
 
 void solve(int tc){
+    vector<char> v;
     int n; cin>>n;
-    vi v(n);
     string s; cin>>s;
-    ll ans=0;
-    For(i,n){
-        if(s[i]=='L'){
-            ans += i;
-            v[i] = (n-i-1) - i; 
+    for(int i=n-1 ; i>=0; --i){
+        if(s[i]=='0'){
+            int x = s[i-2]-'0';
+            x = (x*10) + (s[i-1]-'0');
+            char ch = 'a'+x-1;
+            v.push_back(ch);
+            i-=2;
         }
         else{
-            ans += (n-i-1);
-            v[i] = i - (n-i-1);
+            int x=s[i]-'0';
+            char ch='a'+x-1;
+            v.pb(ch);
         }
     }
-    sort(v.rbegin(),v.rend());
-    For(i,n){
-        if(v[i]>0) ans+=v[i];
-        cout<<ans<<" ";
-    }
+    for(int j=v.size()-1;j>=0;--j) cout<<v[j];
     cout<<nl;
 }
 

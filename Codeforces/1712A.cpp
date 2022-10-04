@@ -13,24 +13,31 @@ typedef long long ll;
 typedef unsigned long ulong;
 const ll M = 1000000007;
 
-void solve(){
-    int n,k,count=0; cin>>n>>k;
+void solve(int tc){
+    int n,k; cin>>n>>k;
+    unordered_map<int, int> um;
     vi v(n);
-    For(i,n)cin>>v[i];
     For(i,n){
-        if(v[i]>=v[k-1] && v[i]>0) count++;
+        cin>>v[i];
+        um[v[i]] = i+1;
+    }
+    sort(v.begin(),v.end());
+    int count=0;
+    For(i,k){
+        if(um[v[i]]>k) ++count;
     }
     cout<<count<<nl;
 }
 
 int main(){
-    // #ifndef ONLINE_JUDGE
-    // freopen("../Input.txt", "r", stdin);
-    // freopen("../Output.txt", "w", stdout);
-    // #endif
+    #ifndef ONLINE_JUDGE
+    freopen("../Input.txt", "r", stdin);
+    freopen("../Output.txt", "w", stdout);
+    #endif
 
-
-    solve();
+    int t,tc=1; cin>>t;
+    while(t--)
+    solve(tc++);
 
 return 0;
 }

@@ -14,26 +14,22 @@ typedef unsigned long ulong;
 const ll M = 1000000007;
 
 void solve(int tc){
-    int n; cin>>n;
-    vi v(n);
     string s; cin>>s;
-    ll ans=0;
-    For(i,n){
-        if(s[i]=='L'){
-            ans += i;
-            v[i] = (n-i-1) - i; 
-        }
-        else{
-            ans += (n-i-1);
-            v[i] = i - (n-i-1);
-        }
+    sort(s.begin(),s.end());
+    int n = s.size(),i=0;
+    while(s[i]=='0'){
+        cout<<0; ++i;
     }
-    sort(v.rbegin(),v.rend());
-    For(i,n){
-        if(v[i]>0) ans+=v[i];
-        cout<<ans<<" ";
+    int k=i;
+    for(i=i;i<n;++i){
+        if(s[i]==s[k] || s[i]==s[n-1]) cout<<s[i];
+        else {
+            ++s[i];
+            cout<<s[i];
+        }
     }
     cout<<nl;
+
 }
 
 int main(){

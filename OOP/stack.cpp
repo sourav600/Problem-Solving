@@ -35,8 +35,8 @@ public:
 
 int main(){
     #ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
+    freopen("../input.txt", "r", stdin);
+    freopen("../output.txt", "w", stdout);
     #endif
 
     stack s1('A'), s2('B');
@@ -46,14 +46,7 @@ int main(){
     s2.push('y');
     s1.push('c');
     s2.push('z');
-    // s1.push('d');
-    // s1.push('e');
-    // s1.push('f');
-    
-    
-    
-    // s2.push('p');
-    // s2.push('q');
+
     
 
     for(int i=0; i<5;i++){

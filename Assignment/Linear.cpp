@@ -13,15 +13,6 @@ typedef long long ll;
 typedef unsigned long ulong;
 const ll M = 1000000007;
 
-void solve(){
-    int n,k,count=0; cin>>n>>k;
-    vi v(n);
-    For(i,n)cin>>v[i];
-    For(i,n){
-        if(v[i]>=v[k-1] && v[i]>0) count++;
-    }
-    cout<<count<<nl;
-}
 
 int main(){
     // #ifndef ONLINE_JUDGE
@@ -29,8 +20,15 @@ int main(){
     // freopen("../Output.txt", "w", stdout);
     // #endif
 
-
-    solve();
-
+    cout<<"Enter array elemnets (Integer): ";
+    vi v;
+    int n;
+    while(cin>>n && getchar()!='\n') v.pb(n);
+    cout<<"Enter value to find: ";
+    int x,check=0; cin>>x;
+    For(i,v.size()){
+        if(v[i]==x) {cout<<x<<" found at positon "<<i+1<<nl; check=1; break;}
+    }
+    if(check==0)cout<<"Not Found\n";
 return 0;
 }

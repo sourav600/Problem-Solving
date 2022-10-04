@@ -13,15 +13,7 @@ typedef long long ll;
 typedef unsigned long ulong;
 const ll M = 1000000007;
 
-void solve(){
-    int n,k,count=0; cin>>n>>k;
-    vi v(n);
-    For(i,n)cin>>v[i];
-    For(i,n){
-        if(v[i]>=v[k-1] && v[i]>0) count++;
-    }
-    cout<<count<<nl;
-}
+
 
 int main(){
     // #ifndef ONLINE_JUDGE
@@ -29,8 +21,13 @@ int main(){
     // freopen("../Output.txt", "w", stdout);
     // #endif
 
-
-    solve();
+    double l,w;
+    while(cin>>l>>w && l!=0 && w!=0){
+        double i = l/(sqrt(2.0)+1.0);
+        double d = sqrt(2.0)*i;
+        double ans=l+w-(2*i)+d;
+        cout<<ans<<nl;
+    }
 
 return 0;
 }

@@ -13,28 +13,6 @@ typedef unsigned long ulong;
 #define pi acos(-1)
 const ll M = 1000000007;
 
-void solve(int tc){
-    int n; cin>>n;
-    vi v(n);
-    string s; cin>>s;
-    ll ans=0;
-    For(i,n){
-        if(s[i]=='L'){
-            ans += i;
-            v[i] = (n-i-1) - i; 
-        }
-        else{
-            ans += (n-i-1);
-            v[i] = i - (n-i-1);
-        }
-    }
-    sort(v.rbegin(),v.rend());
-    For(i,n){
-        if(v[i]>0) ans+=v[i];
-        cout<<ans<<" ";
-    }
-    cout<<nl;
-}
 
 int main(){
     #ifndef ONLINE_JUDGE
@@ -42,9 +20,17 @@ int main(){
     freopen("../Output.txt", "w", stdout);
     #endif
 
-    int t,tc=1; cin>>t;
-    while(t--)
-    solve(tc++);
+    int n; cin>>n;
+    cout<<0<<nl;
+    for(int i=1;i<=n;++i){
+        int k=i,check=0;
+        for(int j=0; (1<<j)<=k; ++j){
+            if(( (k& (1<<j))==1 && (n & (1<<j)))==1) continue;
+            else {check=1;}
+        }
+        if(check==0) cout<<i<<nl;
+    }
+
 
 return 0;
 }
