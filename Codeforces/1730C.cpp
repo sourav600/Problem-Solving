@@ -15,19 +15,14 @@ const ll M = 1000000007;
 
 void solve(int tc){
     string s; cin>>s;
+    int n = s.size();
+    char mn = '9';
+    for(int i=n-1;i>=0;--i){
+        mn = min(mn,s[i]);
+        if(s[i]>mn && s[i]!='9') s[i]++; 
+    }
     sort(s.begin(),s.end());
-    int n = s.size(),i=0;
-    while(s[i]=='0'){
-        cout<<0; ++i;
-    }
-    int k=i;
-    for(i=i;i<n;++i){
-        if(s[i]==s[k] || s[i]==s[n-1]) cout<<s[i];
-        else {
-            ++s[i];
-            cout<<s[i];
-        }
-    }
+    For(i,n) cout<<s[i];
     cout<<nl;
 
 }
