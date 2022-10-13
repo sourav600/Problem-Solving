@@ -25,7 +25,6 @@ void solve(int tc){
     }
     cout<<nl;
 }
-
 int main(){
     #ifndef ONLINE_JUDGE
     freopen("../Input.txt", "r", stdin);
