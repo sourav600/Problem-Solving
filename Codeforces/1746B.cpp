@@ -27,7 +27,7 @@ void solve(int tc){
     if(zero.size()==0 || one.size()==0){
         cout<<0<<nl; return;
     }
-    while(zero[i]>one[i]){
+    while(zero[i]>one[i] && i<zero.size() && i<one.size()){
         count++;
         ++i;
     }
