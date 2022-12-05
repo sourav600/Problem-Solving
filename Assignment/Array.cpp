@@ -29,10 +29,11 @@ while(1){
         if(it==arr.end()){cout<<"Not Found!\n"; continue;}
         arr.erase(it);
     }
-    else if(n==3){cout<<"Program End!""; break;}
+    else if(n==3){cout<<"Program End!"; break;}
     else {
         system("clear");
-        cout<<"Please enter valid number.";}
+        cout<<"Please enter valid number.";
+    }
 }
 
 
