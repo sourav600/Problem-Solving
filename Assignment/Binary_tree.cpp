@@ -37,29 +37,70 @@ Binary_Tree* insertNode(Binary_Tree* root, int data){
     return root;
 }
 
+Binary_Tree* FindMin(Binary_Tree* root){
+    while(root->left!=NULL) root = root->left;
+    return root;
+}
+Binary_Tree* DeleteNode(Binary_Tree* root, int key){
+    if(root==NULL) return root;
+    else if(key < root->data) root->left = DeleteNode(root->left,key);
+    else if(key>root->data) root->right = DeleteNode(root->right,key);
+    else{
+        if(root->left==NULL && root->right==NULL){
+            delete root;
+            root=NULL;
+        }
+        else if(root->right==NULL){
+            Binary_Tree* temp = root;
+            root = root->left;
+            delete temp;
+        }
+        else if(root->left == NULL){
+            Binary_Tree* temp=root;
+            root=root->right;
+            delete temp;
+        }
+
+        else{
+            Binary_Tree* mini=FindMin(root->right);
+            root->data = mini->data;
+            root->right = DeleteNode(root->right, mini->data);
+        }
+    }
+    return root;
+}
+
 void preorder(Binary_Tree* root){
     if(root==NULL) return;
     cout<<root->data<<" ";
     preorder(root->left);
     preorder(root->right);
 }
+void Inorder(Binary_Tree* root){
+    if(root==NULL) return;
+    Inorder(root->left);
+    cout<<root->data<<" ";
+    Inorder(root->right);
+}
 
 int main(){
-    #ifndef ONLINE_JUDGE
-    freopen("../Input.txt", "r", stdin);
-    freopen("../Output.txt", "w", stdout);
-    #endif
+    // #ifndef ONLINE_JUDGE
+    // freopen("../Input.txt", "r", stdin);
+    // freopen("../Output.txt", "w", stdout);
+    // #endif
 
     Binary_Tree* root = NULL;
-    root = insertNode(root, 15);
+    root = insertNode(root, 50);
+    root = insertNode(root, 30);
     root = insertNode(root, 20);
-    root = insertNode(root, 10);
-    root = insertNode(root, 8);
-    root = insertNode(root, 18);
-    root = insertNode(root, 12);
-    root = insertNode(root, 25);
-    preorder(root);
-    
+    root = insertNode(root, 40);
+    root = insertNode(root, 70);
+    root = insertNode(root, 60);
+    root = insertNode(root, 80);
+    Inorder(root);
+    cout<<endl;
+    root = DeleteNode(root,20);
+    Inorder(root);
     
 return 0;
 }
