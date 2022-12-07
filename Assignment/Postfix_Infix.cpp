@@ -37,6 +37,6 @@ int main(){
         }
     }
     cout<<"Postfix to infix conversion result: ";
-    cout<<pop()<<nl;
+    cout<<pop()<<endl;
 return 0;
 }

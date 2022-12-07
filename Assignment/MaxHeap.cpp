@@ -7,7 +7,7 @@ void swap(int &a, int &b){
     b=temp;
 }
 
-void heapCreation(vector<int> &v, int size, int i){
+void maxHeapCreation(vector<int> &v, int size, int i){
     int mx=i;
     int l= (2*i)+1;
     int r= (2*i)+2;
@@ -17,7 +17,7 @@ void heapCreation(vector<int> &v, int size, int i){
 
     if(mx!=i){
         swap(v[i],v[mx]);
-        heapCreation(v,size,mx);
+        maxHeapCreation(v,size,mx);
     }
 }
 
@@ -33,7 +33,7 @@ int main(){
     for(int i=0;i<n;++i) cin>>arr[i];
 
     int start = (n/2)-1;
-    for(int i=start; i>=0;--i) heapCreation(arr,n,i);
+    for(int i=start; i>=0;--i) maxHeapCreation(arr,n,i);
 
     for(int i=0;i<n;++i) cout<<arr[i]<<" ";
     return 0;
