@@ -18,15 +18,11 @@ void solve(int tc){
     cin.ignore();
     string s,r;
     cin>>s;
-    unordered_map<string,int> um;
-    set<string> ss;
-    for(int i=0; i<n-1; ++i){
-        r = s.substr(0,i);
-        um[r+s.substr(i+2)]++;
-        //ss.insert(r+s.substr(i+2));
+    int ct=0;
+    For(i,n-2){
+        if(s[i]==s[i+2]) ++ct;
     }
-    //for(auto it:um) cout<<it.first<<nl;
-    cout<<um.size()<<nl;
+    cout<<n-ct-1<<nl;
 }
 
 int main(){
