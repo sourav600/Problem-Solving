@@ -14,20 +14,28 @@ typedef unsigned long ulong;
 const ll M = 1000000007;
 
 void solve(int tc){
-    int n,w,h;
-    cin>>n>>w>>h;
-    vi a(n),b(n),diff(n);
- 
-    For(i,n) cin>>a[i]; 
-    For(i,n) cin>>b[i]; 
-        
-    int l=INT_MIN,r=INT_MAX;
-    For(i,n){
-        l = max(l, a[i]-w-b[i]+h);
-        r = min(r, a[i]+w-b[i]-h);
+    int n;
+    cin>>n;
+    int alice=0, bob=0;
+    int x = 1;
+    int a1=0,a2=0,b1=0,b2=0;
+    for(int i=1; n>0 ;++i){
+        if(i&1){
+            int ct = min(x,n);
+            a1 += ceil((ct*1.0)/2);
+            b1 += ct/2;
+            n-=x;
+            x+=4;
+        }
+        else{
+            int ct = min(x,n);
+            a2 += ct/2 ;
+            b2 += ceil((ct*1.0)/2.0); 
+            n-=x;
+            x+=4;
+        }
     }
-    if(l>r)cout<<"NO\n";
-    else cout<<"YES\n";
+    cout<<a1<<" "<<b1<<" "<<a2<<" "<<b2<<nl;
 }
 
 int main(){
