@@ -13,8 +13,26 @@ typedef unsigned long ulong;
 #define pi acos(-1)
 const ll M = 1000000007;
 
+vector<int> lst[1000];
 int graph[100][100];
-vector<int > lst[1000];
+bool visited[1000];
+
+void dfs_list(int vertex){
+    visited[vertex]=true;
+    cout<<vertex<<" ";
+    for(int child : lst[vertex]){
+        if(visited[child]) continue;
+        dfs_list(child);
+    }
+}
+void dfs_matrix(int child, int ver){
+    visited[child]=true;
+    cout<<child+1<<" ";
+    for(int i=0; i<ver;++i){
+        if(graph[child][i]==1 && (!visited[i]))
+            dfs_matrix(i,ver);
+    }
+}
 
 int main(){
     #ifndef ONLINE_JUDGE
@@ -23,7 +41,6 @@ int main(){
     #endif
 
     int v,e; cin>>v>>e;
-    
     For(i,e){
         int v1,v2,w;
         cin>>v1>>v2;
@@ -44,7 +61,11 @@ int main(){
         for(auto it : lst[i]) cout<<it<<" ";
         cout<<nl;
     }
-
+    cout<<"DFS List: ";
+    dfs_list(1);
+    For(i,1000) visited[i]=false;
+    cout<<"\nDFS Matrix: ";
+    dfs_matrix(0,v);
     
 return 0;
 }

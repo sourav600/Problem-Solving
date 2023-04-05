@@ -84,15 +84,7 @@ void print(Node *node){
     cout<<nl;
 }
 
-int main(){
-   
-    // addToLast(&head,10);
-    // addToFirst(&head,20);
-    // addToFirst(&head,25);
-    // addCustom(&head, 3,15);
-    // print(head);
-    // deleteNode(&head,10);
-    // print(head);
+int main(){ 
 
     Node* head = NULL;
     int i,choose, item;

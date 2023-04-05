@@ -12,9 +12,19 @@ typedef unsigned long ulong;
 #define pb(x) push_back(x)
 #define pi acos(-1)
 const ll M = 1000000007;
+const int N = 1e5+10;
 
-int graph[100][100];
-vector<int > lst[1000];
+vector<int> g[N];
+bool vis[N];
+
+void dfs(int ver){
+    if(vis[ver]) return;
+
+    vis[ver]=true;
+    for(int child : g[ver]){
+        dfs(child);
+    }
+}
 
 int main(){
     #ifndef ONLINE_JUDGE
@@ -22,29 +32,22 @@ int main(){
     freopen("../Output.txt", "w", stdout);
     #endif
 
-    int v,e; cin>>v>>e;
+    int v,e;
+    cin>>v>>e;
     
+    int v1,v2;
     For(i,e){
-        int v1,v2,w;
         cin>>v1>>v2;
-        graph[v1-1][v2-1]=1;
-        graph[v2-1][v1-1]=1;
-
-        lst[v1].push_back(v2);
-        lst[v2].push_back(v1);
+        g[v1].pb(v2);
+        g[v2].pb(v1);
     }
-    cout<<"Matrix\n";
+    int cc = 0;
     For(i,v){
-        For(j,v) cout<<graph[i][j]<<" ";
-        cout<<nl;
+        if(vis[i+1]) continue;
+        dfs(i+1);
+        ++cc;
     }
-    cout<<nl<<"Adjacency List\n";
-    for(int i=1;i<=v;++i){
-        cout<<i<<": ";
-        for(auto it : lst[i]) cout<<it<<" ";
-        cout<<nl;
-    }
+    cout<<cc<<nl;
 
-    
 return 0;
 }

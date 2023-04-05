@@ -13,8 +13,7 @@ typedef unsigned long ulong;
 #define pi acos(-1)
 const ll M = 1000000007;
 
-int graph[100][100];
-vector<int > lst[1000];
+
 
 int main(){
     #ifndef ONLINE_JUDGE
@@ -22,29 +21,21 @@ int main(){
     freopen("../Output.txt", "w", stdout);
     #endif
 
-    int v,e; cin>>v>>e;
-    
-    For(i,e){
-        int v1,v2,w;
-        cin>>v1>>v2;
-        graph[v1-1][v2-1]=1;
-        graph[v2-1][v1-1]=1;
-
-        lst[v1].push_back(v2);
-        lst[v2].push_back(v1);
+    int h,d,n, mn=INT_MAX;
+    cin>>h>>d>>n;
+    int cost, cities;
+    For(i,n){
+        cin>>cost>>cities;
+        vi ar(cities);
+        For(i,cities) cin>>ar[i];
+        int a = find(ar.begin(),ar.end(),h)-ar.begin();
+        int b = find(ar.begin(),ar.end(),d)-ar.begin();
+        //cout<<a<<" "<<b<<nl;
+        if(ar[cities-1]==h && ar[0]==d) mn = min(cost,mn);
+        else if(a<b) mn = min(cost,mn);
     }
-    cout<<"Matrix\n";
-    For(i,v){
-        For(j,v) cout<<graph[i][j]<<" ";
-        cout<<nl;
-    }
-    cout<<nl<<"Adjacency List\n";
-    for(int i=1;i<=v;++i){
-        cout<<i<<": ";
-        for(auto it : lst[i]) cout<<it<<" ";
-        cout<<nl;
-    }
-
+    if(mn==INT_MAX) cout<<-1<<nl;
+    else cout<<mn<<nl;
     
 return 0;
 }
