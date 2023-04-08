@@ -10,6 +10,8 @@ public:
     int data;
     Node* next;
 };
+Node* sorted;
+Node* head;
 
 void addToFirst(Node** head_ref, int new_data){
     Node* new_node = new Node();
@@ -74,6 +76,35 @@ void deleteNode(Node** head_ref, int key){
         delete temp;
     }
 }
+    void sortedInsert(Node* newnode)
+    {
+        if (sorted == NULL || sorted->data >= newnode->data) {
+            newnode->next = sorted;
+            sorted = newnode;
+        }
+        else {
+            Node* current = sorted;
+            while (current->next != NULL
+                   && current->next->data < newnode->data) {
+                current = current->next;
+            }
+            newnode->next = current->next;
+            current->next = newnode;
+        }
+    }
+
+void insertionSort(Node* headref)
+    {
+        sorted = NULL;
+        Node* current = headref;
+        while (current != NULL) {
+            Node* next = current->next;
+            sortedInsert(current);
+            current = next;
+        }
+        head = sorted;
+    }
+
 
 void print(Node *node){
 
@@ -86,7 +117,7 @@ void print(Node *node){
 
 int main(){ 
 
-    Node* head = NULL;
+    head=NULL;
     int i,choose, item;
     char ch;
     while(1)
@@ -97,7 +128,8 @@ int main(){
         cout<<endl<<"Enter your choose: "<<endl;
         cout<<"1. Insert."<<endl;
         cout<<"2. Delete."<<endl;
-        cout<<"3. Exit."<<endl;
+        cout<<"3. Sort."<<endl;
+        cout<<"4. Exit."<<endl;
         cin>>choose;
         if(choose==1)
         {
@@ -149,7 +181,10 @@ int main(){
                 --total;
             }
         }
-        else if(choose==3)
+        else if(choose==3){
+            insertionSort(head);
+        }
+        else if(choose==4)
         {
             system("clear");
             cout<<"Program End!\n";
