@@ -20,7 +20,7 @@ int main(){
     freopen("../Output.txt", "w", stdout);
     #endif
 
-    vector<int> nums;;
+    vector<int> nums;
     nums.push_back(1);
     nums.push_back(3);
     nums.push_back(-1);
