@@ -13,8 +13,8 @@ typedef unsigned long ulong;
 #define pi acos(-1)
 const ll M = 1000000007;
 
-int graph[100][100];
-vector<int > lst[1000];
+int graph[1000][1000];
+vector<int > lst[10000];
 
 int main(){
     #ifndef ONLINE_JUDGE

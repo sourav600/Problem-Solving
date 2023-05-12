@@ -18,11 +18,13 @@ const ll N = 1e5 + 10;
 int parent[N];
 int Size[N];
 multiset<int> ms;
+int len;
 
 void make(int v){
     parent[v] = v;
     Size[v]=1;
     ms.insert(1);
+    ++len;
 }
 int find(int v){
     if(parent[v]==v) return v;
@@ -39,6 +41,7 @@ void Union(int a, int b){
             ms.erase(ms.find(Size[b]));
             Size[b] += Size[a];
             ms.insert(Size[b]);
+            --len;
         }
         else{
             parent[b] = a;
@@ -46,6 +49,7 @@ void Union(int a, int b){
             ms.erase(ms.find(Size[b]));
             Size[a] += Size[b];
             ms.insert(Size[a]);
+            --len;
         }
     }
 }
@@ -64,7 +68,14 @@ int main(){
     while(q--){
         cin>>a>>b;
         Union(a,b);
-        cout<<*(--ms.end()) - (*(ms.begin())) <<nl;
+        int mn = INF;
+        auto it=ms.begin();
+        for(int i=1; i<len;++i){
+            int a = *it, b = *(++it);
+            mn = min(mn, abs(a-b));
+        }
+        if(mn==INF) cout<<0<<nl;
+        else cout<<mn<<nl;
     }
 
 
