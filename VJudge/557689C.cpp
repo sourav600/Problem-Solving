@@ -38,9 +38,7 @@ void solve(){
     cin.ignore();
     string s;
     cin>>s;
-    // deque<char> dq;
-    // For(i,n) dq.push_back(s[i]);
-    // auto it = dq.begin();
+
     int pos=0;
     while(q--){
         int x;
@@ -52,8 +50,7 @@ void solve(){
         }
         else if(x==2){
             int p; cin>>p;
-            if(p<=pos) cout<<s[n-p+1]<<nl;
-            else cout<<s[p-pos-1]<<nl;
+            cout<<s[(p-pos+n-1)%n]<<nl;
         }
     }
 }
