@@ -21,10 +21,14 @@ void solve(){
     For(i,n) cin>>v[i];
     ll mx = -INF;
     ll temp=0;
+    int l=0,r=0;
     For(i,n){
         temp+=v[i];
         mx = max(temp,mx);
-        if(temp<=0) temp=0;
+    
+        if(temp<=0) {
+            temp=0;
+        }
     }
     cout<<mx<<nl;
 }
