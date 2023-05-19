@@ -33,6 +33,8 @@ int main(){
     
     vector<int> v;
     deque<int> q;
+
+    //find max of first window
     for(int i=0;i<k;++i){
       	if(q.empty()) q.push_back(nums[i]);
         else{
@@ -42,6 +44,7 @@ int main(){
             q.push_back(nums[i]);
         }
     }
+
     v.push_back(q.front());
     int l=0;
     for(int i=k;i<nums.size();++i){
