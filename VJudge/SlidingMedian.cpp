@@ -1,5 +1,5 @@
 #include<bits/stdc++.h>
-#include <ext/pb_ds/assoc_container.hpp> // Common file
+#include <ext/pb_ds/assoc_container.hpp>
 #include <ext/pb_ds/tree_policy.hpp>
 using namespace std;
 using namespace __gnu_pbds;
@@ -27,6 +27,7 @@ int main(){
     freopen("../Input.txt", "r", stdin);
     freopen("../Output.txt", "w", stdout);
     #endif
+
 
     int n,k;
     cin>>n>>k;
