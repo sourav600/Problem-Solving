@@ -26,25 +26,24 @@ vector<pair<int,int> > movements = { {+1,0},{-1,0},{0,+1},{0,-1} };
 ll mod(ll a){ return ((a%M)+M)%M;}
 
 void SOURAV(int tc){
-	ll m,k,a,b;
-	cin>>m>>k>>a>>b;
+	ll n; cin>>n;
+	ll ans=0;
 
-	ll take_k = min(m/k,b);
-	ll take1 = min(m-take_k*k , a);
-	//cout<<take_k<<" "<<take1<<nl;
+	vl v(n);
+    For(i,n){
+        For(j,n) v[j] = j+1;
 
-	ll need = m - (take_k*k + take1);
-	ll r = need%k;
-	if(r==0){
-		cout<<need/k<<nl;
-	}
-	else if(a>=k-r){
-		cout<<need/k + 1<<nl;
-	}
-	else{
-		cout<<(need/k)+r<<nl;
-	}
-	
+        reverse(v.begin()+i, v.end());
+        ll sum=0, mx=0;
+        For(j,n){
+            sum += v[j]*(j+1);
+            mx = max(mx, v[j]*(j+1));
+        }
+        ans = max(ans, sum-mx);
+    }
+
+    cout<<ans<<nl;
+
 }
 
 int main(){
@@ -60,3 +59,6 @@ int main(){
 
 return 0;
 }
+
+
+
