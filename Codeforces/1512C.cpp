@@ -3,7 +3,6 @@
 #include<ext/pb_ds/tree_policy.hpp>
 using namespace __gnu_pbds;
 using namespace std;
-
 #define nl '\n'
 #define pi acos(-1)
 #define ll long long
