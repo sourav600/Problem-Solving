@@ -19,17 +19,36 @@ void solve(int tc){
     int n ;cin>>n;
     cin.ignore();
     string s; cin>>s;
-    unordered_map<char, int> um;
-    int unique = 0, pos=0;
+    unordered_map<char, int> um1, um2;
+
+    vi prefix(n), suffix(n);
+    int unique = 0;
     For(i,n){
-        if(um[s[i]]==0) unique++;
-        um[s[i]]++;
-        if(um[s[i]]>1 || i==n-1){pos=i;um.clear(); break;} 
+        if(um1[s[i]] == 0){
+            ++unique;
+            ++um1[s[i]];
+        }
+        prefix[i] = unique;
     }
-    for(int i=pos; i<n;++i){
-        um[s[i]]++;
+    unique = 0;
+    for(int i=n-1; i>=0; --i){
+        if(um2[s[i]] == 0){
+            ++unique;
+            ++um2[s[i]];
+        }
+        suffix[i] = unique;
     }
-    cout<<unique + um.size()<<nl;
+
+    int mx = 0;
+    for(int i=0; i<n-1; ++i){
+        mx = max(mx, prefix[i]+suffix[i+1]);
+    }
+    cout<<mx<<nl;
+
+    // For(i,n) cout<<prefix[i]<<" ";
+    // cout<<nl;
+    // For(i,n) cout<<suffix[i]<<" ";
+    // cout<<nl;
 }
 
 int main(){
