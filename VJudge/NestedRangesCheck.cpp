@@ -26,10 +26,10 @@ const ll N = 1e5 + 10;
 
 
 int main(){
-    #ifndef ONLINE_JUDGE
-    freopen("../Input.txt", "r", stdin);
-    freopen("../Output.txt", "w", stdout);
-    #endif
+    // #ifndef ONLINE_JUDGE
+    // freopen("../Input.txt", "r", stdin);
+    // freopen("../Output.txt", "w", stdout);
+    // #endif
 
     int n; cin>>n;
     vi ans1(n,0), ans2(n,0);

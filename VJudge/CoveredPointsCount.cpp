@@ -54,7 +54,7 @@ int main(){
     For(i,2*n) prefix[i] += prefix[i-1];
 
     vl ans(n+1,0);
-    for(int i=1;i<=k;++i){
+    for(int i=2;i<=k;++i){
         ans[prefix[i-1]] += (rev[i] - rev[i-1]);
     }
 

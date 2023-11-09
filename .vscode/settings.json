@@ -15,7 +15,8 @@
         "map": "cpp",
         "unordered_set": "cpp",
         "iostream": "cpp",
-        "random": "cpp"
+        "random": "cpp",
+        "format": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

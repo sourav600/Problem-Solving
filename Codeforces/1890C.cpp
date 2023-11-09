@@ -24,26 +24,40 @@ const ll N = 2e5 + 10;
 vector<pair<int,int> > movements = { {+1,0},{-1,0},{0,+1},{0,-1} };
 ll mod(ll a){ return ((a%M)+M)%M;}
 
-double f(double x) {
-    return (x*x*x)-(x*x)+2;
-}
-double f1(double x) {
-    return (3*x*x)-(2*x);
-}
+void SOURAV(int tc){
 
-void newtonRepson(double a){
-    double h = f(a) / f1(a);
-    while(abs(h) >= 0.01){
-        h = f(a) / f1(a);
-
-        a = a-h;
+    int n; cin>>n;
+    vector<int> ans;
+    cin.ignore();
+    string s;
+    cin>>s;
+    int ct=0,i=0;
+    while(ct<=300 && i<s.size()){
+        if(s[i] == s[s.size()-i-1]){
+            ++ct;
+            if(s[i]=='1'){
+                ans.push_back(i+1);
+            }else{
+                ans.push_back(s.size()-i);
+            }
+        }
     }
-    cout<<"The root is: "<<a<<endl;
-
+    cout<<ans.size()<<nl;
+    for(auto it: ans) cout<<it<<" ";
+        cout<<nl;
 }
 
 int main(){
-    newtonRepson(2);
+    #ifndef ONLINE_JUDGE
+    freopen("../Input.txt", "r", stdin);
+    freopen("../Output.txt", "w", stdout);
+    #endif
+    ios::sync_with_stdio(false);cin.tie(0);cout.tie(0);
+
+    int t,tc=1; cin>>t;
+    while(t--)
+    SOURAV(tc++);
+
 return 0;
 }
 

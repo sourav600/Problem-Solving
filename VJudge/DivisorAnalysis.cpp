@@ -25,25 +25,44 @@ const ll N = 2e5 + 10;
 vector<pair<int,int> > movements = { {+1,0},{-1,0},{0,+1},{0,-1} };
 ll mod(ll a){ return ((a%M)+M)%M;}
 
+unordered_map<ll,ll> um;
+
+ll binExpIter(ll a, ll b){
+    ll ans = 1;
+    while(b){
+        if(b&1){
+            ans = (ans*a)%M;
+        }
+        a = (a*a)%M;
+        b>>=1;
+    }
+    return ans;
+}
+
+
 void SOURAV(int tc){
-	ll m,k,a,b;
-	cin>>m>>k>>a>>b;
+	ll n;	cin>>n;
+	ll x,k;
+	ll num=1,ct=1, sum=1;
+	For(i,n){
+		cin>>x>>k;
+		um[x] = k;
+	}
+	for(auto it : um){
+		ct = mod(ct*(it.second+1));
 
-	ll take_k = min(m/k,b);
-	ll take1 = min(m-take_k*k , a);
-	//cout<<take_k<<" "<<take1<<nl;
+		ll numeretor = mod(binExpIter(it.first,it.second+1)-1);
+		ll denominator = mod(binExpIter(it.first-1, M-2));
+		sum = mod(sum*mod(numeretor*denominator));
+	}	
+	for(auto)
+	num = mod(num*(binExpIter(x,k)));
+	
 
-	ll need = m - (take_k*k + take1);
-	ll r = need%k;
-	if(r==0){
-		cout<<need/k<<nl;
-	}
-	else if(a>=k-r){
-		cout<<need/k + 1<<nl;
-	}
-	else{
-		cout<<(need/k)+r<<nl;
-	}
+	
+	
+	ll power = binExpIter(num, (ct/2));;
+	cout<<ct<<" "<<sum<<" "<<power<<nl;
 	
 }
 
@@ -54,8 +73,7 @@ int main(){
     #endif
     ios::sync_with_stdio(false);cin.tie(0);cout.tie(0);
 
-    int t,tc=1; cin>>t;
-    while(t--)
+    int t,tc=1;
     SOURAV(tc++);
 
 return 0;

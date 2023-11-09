@@ -1,41 +1,58 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-#define nl '\n'
-#define pi acos(-1)
-#define ll long long
-#define For(i,n) for(ll i=0; i<n; i++)
-#define all(x) x.begin(), x.end()
 
 int main(){
-    // #ifndef ONLINE_JUDGE
-    // freopen("../Input.txt", "r", stdin);
-    // freopen("../Output.txt", "w", stdout);
-    // #endif
+    #ifndef ONLINE_JUDGE
+    freopen("../Input.txt", "r", stdin);
+    freopen("../Output.txt", "w", stdout);
+    #endif
     ios::sync_with_stdio(false);cin.tie(0);cout.tie(0);
 
-    float a[10][10], b[10], m[10], n[10];
-    int p;
-    cout<<"Enter array size: ";
-    cin>>p;
-    cout<<"Enter array elements: \n";
+    float a[10][10], a1[10][10], b[10],b1[10], m[10], n[10];
+    int sz;
+    //cout<<"Enter array size: ";
+    cin>>sz;
+    //cout<<"Enter array elements: \n";
 
-    for(int i=0; i<p; ++i){
-        for(int j=0; j<p; ++j) cin>>a[i][j]; 
+    for(int i=0; i<sz; ++i){
+        for(int j=0; j<sz; ++j) cin>>a1[i][j];
+    }
+    //cout<<"Enter rignt side value: ";
+    for(int i=0; i<sz; ++i) cin>>b1[i];
+
+    for(int i=0; i<sz; ++i){
+        int mx = INT_MIN, pos=0;
+        for(int j=0; j<sz; ++j){
+            if(mx < a1[i][j]){
+                mx = a1[i][j];
+                pos = j;
+            }
+        }
+        for(int k=0; k<sz; ++k) a[pos][k] = a1[i][k];
+        b[pos] = b1[i];
     }
 
-    cout<<"Enter rignt side value: ";
-    for(int i=0; i<p; ++i) cin>>b[i];
+    cout<<"Rearranging array: \n";
+    for(int i=0; i<sz; ++i){
+        for(int j=0; j<sz; ++j) cout<<a[i][j]<<" ";
+            cout<<endl;
+    }
+    for(int i=0; i<sz; ++i)  cout<<b[i]<<" ";
+        cout<<endl;
 
-    cout<<"Enter initial value of x ";
-    for(int i=0; i<p; ++i) cin>>m[i];
+    //cout<<"Enter initial value of x ";
+    for(int i=0; i<sz; ++i) cin>>m[i];
 
-    cout<<"Enter the number of iteration: ";
-    int q; cin>>q;
-    while(q--){
-        for(int i=0; i<p; ++i){
+    //cout<<"Enter the number of iteration: ";
+    int k; cin>>k;
+    cout<<endl;
+    int it=1;
+    while(k--){
+        cout<<"Iteration "<<it++<<":\n";
+        for(int i=0; i<sz; ++i){
             n[i] = b[i] / a[i][i];
-            for(int j=0; j<p; ++j){
+            for(int j=0; j<sz; ++j){
                 if(i==j) continue;
 
                 n[i] = n[i] - (a[i][j] / a[i][i]) * m[j];

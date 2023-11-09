@@ -24,31 +24,34 @@ const ll N = 2e5 + 10;
 vector<pair<int,int> > movements = { {+1,0},{-1,0},{0,+1},{0,-1} };
 ll mod(ll a){ return ((a%M)+M)%M;}
 
-double f(double x){
-    return (x*x*x)-(x*x)+2;
-}
-
-void regularFalsi(double a, double b){
-
-    if(f(a)*f(b) >= 0.0){
-        cout<<"Invalid a,b\n";
-        return;
-    }
-    double x=a;
-    for(int i=0; i<1000000; ++i){
-        x = (a*f(b) - b*f(a)) / (f(b)-f(a));
-        if(f(x)==0.0){
-            return;
+void SOURAV(int tc){
+    int n,k; cin>>n>>k;
+    int x, ans=INT_MAX, even_ct=0;
+    For(i,n){
+        cin>>x;
+        if(x%2==0) ++even_ct;
+        int r = x%k;
+        if(r==0){
+            ans=0;
         }
-        else if(f(x)*f(a) < 0.0) b=x;
-        else a = x;
+        ans = min(ans, k-r);
     }
-    cout<<"The root is: "<<x<<endl;
+    if(k==4){
+        cout<<min(ans,max(0,2-even_ct))<<nl;
+    }
+    else cout<<ans<<nl;
 }
 
 int main(){
-    double a=-3, b=2;
-    regularFalsi(a,b);
+    #ifndef ONLINE_JUDGE
+    freopen("../Input.txt", "r", stdin);
+    freopen("../Output.txt", "w", stdout);
+    #endif
+    ios::sync_with_stdio(false);cin.tie(0);cout.tie(0);
+
+    int t,tc=1; cin>>t;
+    while(t--)
+    SOURAV(tc++);
 
 return 0;
 }

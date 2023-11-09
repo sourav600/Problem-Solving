@@ -28,10 +28,10 @@ void solve(int tc){
 }
 
 int main(){
-    #ifndef ONLINE_JUDGE
-    freopen("../Input.txt", "r", stdin);
-    freopen("../Output.txt", "w", stdout);
-    #endif
+    // #ifndef ONLINE_JUDGE
+    // freopen("../Input.txt", "r", stdin);
+    // freopen("../Output.txt", "w", stdout);
+    // #endif
 
     int n; cin>>n;
     vector<pair<pair<int,int> ,int > > vpp(n); 
