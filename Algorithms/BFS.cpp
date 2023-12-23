@@ -2,16 +2,25 @@
 using namespace std;
 
 const int N = 1e5+10;
-vector<int> adj[N];
-bool visited[N];
+vector<int> g[N];
+bool vis[N];
+int parent[N], lvl[N];
 
-void dfs( int ver){
-    if(visited[ver] == true) return;
-    visited[ver] = true;
-    cout<<ver<<" ";
-    for(auto child: adj[ver]){
-        if(visited[child]) continue;
-        dfs(child);
+void bfs(int src){
+    deque<int> q;
+    q.push(src);
+    vis[src] = true;
+    lvl[src] = 0;
+    parent[src] = -1;
+
+    while(!q.empty()){
+        int cur = q.front();
+        q.pop();
+        for(auto child: g[cur]){
+            if(vis[child]) continue;
+            q.push(child);
+            vis[child] = true;
+        }
     }
 }
 
@@ -26,19 +35,19 @@ int main(){
     int v1,v2;
     for(int i=1;i<=edges;++i){
         cin>>v1>>v2;
-        adj[v1].push_back(v2);
-        adj[v2].push_back(v1);
+        g[v1].push_back(v2);
+        g[v2].push_back(v1);
     }
 
     cout<<"Adjacency List: \n";
     for(int i=1; i<=ver; ++i){
         cout<<i<<": ";
-        for(auto it : adj[i]) cout<<it<<" ";
+        for(auto it : g[i]) cout<<it<<" ";
             cout<<endl;
     }
 
-    cout<<"DFS Traversal: ";
-    dfs(1);
+    cout<<"BFS Traversal: ";
+    bfs(1);
 
 
 
