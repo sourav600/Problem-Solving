@@ -19,6 +19,8 @@ void bfs(int src){
         for(auto child: g[cur]){
             if(vis[child]) continue;
             q.push(child);
+            lvl[child] = lvl[cur]+1;
+            parent[child] = cur;
             vis[child] = true;
         }
     }
