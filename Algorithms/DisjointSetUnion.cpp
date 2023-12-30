@@ -26,8 +26,8 @@ int find(int a){
     return parent[a] = find(parent[a]);
 }
 void Union(int a, int b){
-    a = parent[a];
-    b = parent[b];
+    a = find(a);
+    b = find(b);
     if(a!=b){
         if(size[a]<size[b]) {
             parent[a]=b;
