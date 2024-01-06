@@ -62,8 +62,3 @@ int main(){
     cout<<nl;
 return 0;
 }
-
-
-
-
-
