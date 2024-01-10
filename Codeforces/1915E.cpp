@@ -26,19 +26,17 @@ ll mod(ll a){ return ((a%M)+M)%M;}
 
 void SOURAV(int tc){
     int n; cin >> n;
-    vl v(n+1);
+    vl v(n+1), prefix(n+1,0);
+    map<ll, ll> m;
     for (int i = 1; i <= n; i++) cin >> v[i];
-    unordered_map<ll, ll>um;
-    ll x = 0; ll y = 0;
-    for (int i = 1; i<=n; i++) {
-        if (i % 2 == 1) y += v[i];
-        else x += v[i];
-        ll diff = y - x;
-        if (diff == 0 || um.find(diff) != um.end()) {
-            cout << "YES\n";
-            return;
+    for(int i=1; i<=n; ++i){
+        if(i&1) prefix[i] =prefix[i-1] + v[i];
+        else prefix[i] = prefix[i-1] - v[i];
+
+        if(m[prefix[i]] || prefix[i]==0){
+            cout<<"YES\n";return;
         }
-        um[diff] = i;
+        m[prefix[i]] = 1;
     }
     cout<<"NO\n";
 }
