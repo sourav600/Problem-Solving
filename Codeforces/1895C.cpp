@@ -24,27 +24,53 @@ const ll N = 2e5 + 10;
 vector<pair<int,int> > movements = { {+1,0},{-1,0},{0,+1},{0,-1} };
 ll mod(ll a){ return ((a%M)+M)%M;}
 
+bool comp(string &a, string &b){
+    return a.size() < b.size();
+}
+
 void SOURAV(int tc){
     int n; cin>>n;
-    string s;
-    vs even_s, odd_s;
-    vi ed_sum, od_sum;
+    cin.ignore();
+    vs v(n);
+    map<pair<int,int>, int> m, ct;
     For(i,n){
-        cin>>s;
-        int sum=0;
-        for(int i=0; i<n; ++i) sum += s[i]-'0';
-
-        if(s.size()%2) {
-            odd_s.push_back(s);
-            od_sum.push_back(sum);
-        }
-        else {
-            even_s.push_back(s);
-            ed_sum.push_back(sum);
-        }
-
-
+        cin>>v[i];
     }
+    sort(all(v), comp);
+    ll ans=0;
+
+    For(i,n){
+        string cur = v[i];
+        string rev = v[i];
+        reverse(rev.begin(), rev.end());
+        int len = v[i].size();
+        int mx_len =  min(len * 2, 10);
+        int x;
+        (len%2==1) ? x=1 : x=2;
+        len += x;
+        //cout<<len<<" l "<<mx_len<<" "<<cur<<nl;
+        while(len <= mx_len){
+            int sum = 0;
+            For(j, len/2) sum += cur[j]-'0';
+            for(int j=len/2; j<cur.size();++j) sum-=cur[j]-'0';
+            ans+=m[{x,sum}];
+
+            sum=0;
+            For(j, len/2) sum += rev[j]-'0';
+            for(int j=len/2; j<rev.size();++j) sum-=rev[j]-'0';
+            ans+=m[{x,sum}];
+
+            len += 2;
+            x+=2;
+        }
+
+        int sum=0;
+        For(j,v[i].size()){
+            sum += v[i][j]-'0';
+        }
+        m[{v[i].size(),sum}]++;
+    }
+    cout<<ans+n<<nl;
 }
 
 int main(){
@@ -54,9 +80,8 @@ int main(){
     #endif
     ios::sync_with_stdio(false);cin.tie(0);cout.tie(0);
 
-    int t,tc=1; cin>>t;
-    while(t--)
-    SOURAV(tc++);
+
+    SOURAV(1);
 
 return 0;
 }
