@@ -31,10 +31,11 @@ void NSE(vector<int> &v, int n){
     //remove elements from the stack until the top element is smaller than the current element, or the stack is empty.
     //Then, we report that the top element is the nearest smaller element of the current element, or if the stack is empty, there is no such element.
     for(int i=0 ; i<n; ++i){
-        while(!st.empty() && v[st.top()] >= v[i]){
+        while(!st.empty() && v[st.top()] > v[i]){
             st.pop();
         }
         if(!st.empty())nse[i] = v[st.top()];
+        else nse[i] = -1;
         st.push(i);
     }
     for(int i=0; i<n; ++i) cout<<nse[i]<<" ";
