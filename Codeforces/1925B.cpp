@@ -31,18 +31,14 @@ void SOURAV(int tc){
 
     ll p = a/b;
     ll ans=0;
-    if(p*b==a) cout<<p<<nl;
-    else{
-        while(p>0){
-            ll r = p+(a%p);
-            if(a%p==0){
-                ans = max(ans,p);
-                break;
-            }
-            --p;
+    for(ll i=1; i*i<=a; ++i){
+        if(i*b>a) break;
+        if(a%i==0){
+            if(b*i<=a) ans = max(ans,i);
+            if(i>=b) ans = max(ans,a/i);
         }
-        cout<<ans<<nl;
     }
+    cout<<ans<<nl;
 
 
 }
