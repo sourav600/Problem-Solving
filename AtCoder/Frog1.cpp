@@ -40,19 +40,22 @@ int fun(int n){
 }
 
 int main(){
-    // #ifndef ONLINE_JUDGE
-    // freopen("../Input.txt", "r", stdin);
-    // freopen("../Output.txt", "w", stdout);
-    // #endif
+    #ifndef ONLINE_JUDGE
+    freopen("../Input.txt", "r", stdin);
+    freopen("../Output.txt", "w", stdout);
+    #endif
     ios::sync_with_stdio(false);cin.tie(0);cout.tie(0);
 
-    mem(dp,-1);
-    int n; cin>>n;
-    For(i,n){
-        cin>>arr[i];
-    }
-    cout<<fun(n)<<nl;
+    int t; cin>>t;
+    while(t--){
+        mem(dp,-1);
+        int n,k; cin>>n>>k;
+        For(i,n){
+            cin>>arr[i];
+        }
+        cout<<fun(k)<<nl;
 
+    }
 return 0;
 }
 
