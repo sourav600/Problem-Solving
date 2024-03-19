@@ -45,7 +45,7 @@ int main(){
     #endif
     ios::sync_with_stdio(false);cin.tie(0);cout.tie(0);
 
-    int t; cin>>t;
+    int t=1;
     while(t--){
         memset(dp, -1, sizeof(dp));
         int n;
