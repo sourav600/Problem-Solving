@@ -30,11 +30,32 @@ vector<pair<int,int> > movements = { {+1,0},{-1,0},{0,+1},{0,-1} };
 ll mod(ll a){ return ((a%M)+M)%M;}
 
 void SOURAV(int tc){
-    ll a,b,m;
-    cin>>a>>b>>m;
-    ll ans = m/a +1;
-    ans += (m/b)+1;
+    int n; cin>>n;
+    vi v(n);
+    For(i,n) cin>>v[i];
+
+    bool allEqual = true;
+    For(i,n-1){
+        if(v[i]!=v[i+1]) allEqual = false;
+    }
+    if(allEqual) {cout<<-1<<nl; return;}
+
+    int prefix[n], ct=1;
+    prefix[0] = INT_MAX;
+    for(int i=1; i<n; ++i){
+        prefix[i] = ct;
+        if(v[i]==v[0]) {++ct; prefix[i]=INT_MAX;}
+        else ct = 0;
+    }
+    int ans = 0, p=n-1;
+    while(v[p--]==v[0]) ++ans;
+
+    For(i,n){
+        if(prefix[i]!=INT_MAX) ans = min(ans, prefix[i]);
+    }
     cout<<ans<<nl;
+
+
 }
 
 int main(){
