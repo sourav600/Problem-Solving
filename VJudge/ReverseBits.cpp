@@ -30,25 +30,27 @@ vector<pair<int,int> > movements = { {+1,0},{-1,0},{0,+1},{0,-1} };
 ll mod(ll a){ return ((a%M)+M)%M;}
 
 void SOURAV(int tc){
-    int n; cin>>n;
-    int i=32;
+    ll n; cin>>n;
+    int i=31;
     ll ans = 0;
 
     while(n){
+        // cout<<n<<" ";
+        //cout<<ans<<nl;
         if(n&1){
-            ans |= (1<<i);
+            ans |= (1LL<<i);
         }
         --i;
-        n>>=1;
+        n /= 2;
     }
     cout<<ans<<nl;
 }
 
 int main(){
-    #ifndef ONLINE_JUDGE
-    freopen("../Input.txt", "r", stdin);
-    freopen("../Output.txt", "w", stdout);
-    #endif
+    // #ifndef ONLINE_JUDGE
+    // freopen("../Input.txt", "r", stdin);
+    // freopen("../Output.txt", "w", stdout);
+    // #endif
     ios::sync_with_stdio(false);cin.tie(0);cout.tie(0);
 
     int t,tc=1; cin>>t;
