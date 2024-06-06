@@ -32,7 +32,8 @@ ll mod(ll a){ return ((a%M)+M)%M;}
 void func(int n){
     if(n==0) return;
 
-    cout<<n<<nl;
+    cout<<n;
+    if(n!=1) cout<<" ";
     func(n-1);
 }
 
