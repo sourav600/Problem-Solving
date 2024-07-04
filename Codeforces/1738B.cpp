@@ -7,7 +7,7 @@ using namespace std;
 #define nl '\n'
 #define pi acos(-1)
 #define ll long long
-#define For(i,n) for(ll i=1; i<=n; i++)
+#define For(i,n) for(ll i=0; i<n; i++)
 #define all(x) x.begin(), x.end()
 #define allr(x) x.rbegin(), x.rend()
 #define ordered_set tree<pair<int,int>, null_type,less<pair<int,int> >, rb_tree_tag,tree_order_statistics_node_update>
@@ -29,29 +29,41 @@ vector<pair<int,int> > movements = { {+1,0},{-1,0},{0,+1},{0,-1} };
 //int dx[]={2,1,-1,-2,-1,1};int dy[]={0,1,1,0,-1,-1}; //Hexagonal Direction
 ll mod(ll a){ return ((a%M)+M)%M;}
 
-void SOURAV(int tc){
-    ll n; cin>>n;
-    vl v1(n+1,0), v2(n+1,0);
-    For(i,n){
-        cin>>v1[i];
-        v2[i] = v1[i];
+bool isValid(vl v){
+    bool flag = true;
+    for(int i=0; i<v.size()-1; ++i){
+        if(v[i]>v[i+1]) return false;
     }
-    sort(all(v2));
-    For(i,n){
-            v1[i] += v1[i-1];
-            v2[i] += v2[i-1];
-    }
+    return true;
+}
 
-    int q; cin>>q;
-    ll ch, l,r;
-    while(q--){
-        cin>>ch>>l>>r;
-        if(ch==1){
-            cout<<v1[r]-v1[l-1]<<nl;
-        }else{
-            cout<<v2[r]-v2[l-1]<<nl;
-        }
+void SOURAV(int tc){
+    ll n,k; cin>>n>>k;
+    vl v(k), vv(n,0);
+    For(i,k) cin>>v[i];
+    if(k==1) {
+        cout<<"YES\n";return;
     }
+    ll it = n-1;
+    for(ll i=k-1; i>0; --i){
+        vv[it] = v[i]-v[i-1];
+        if(it!=n-1 && vv[it] > vv[it+1]){
+            cout<<"NO\n";
+            return;
+        }
+        --it;
+    }
+    // for(auto p :vv) cout<<p<<" ";
+    // cout<<nl;
+    ll mx = vv[n-k+1], r = v[0];
+    for(ll i=1; i<=n-k;++i){
+        vv[i] = mx;
+        r -= mx;
+    }
+    vv[0] = r;
+        // for(auto p :vv) cout<<p<<" ";
+        // cout<<nl;
+    isValid(vv) ? cout<<"YES\n" : cout<<"NO\n";
 }
 
 int main(){
@@ -61,9 +73,9 @@ int main(){
     #endif
     ios::sync_with_stdio(false);cin.tie(0);cout.tie(0);
 
-    // int t,tc=1; cin>>t;
-    // while(t--)
-    SOURAV(1);
+    int t,tc=1; cin>>t;
+    while(t--)
+    SOURAV(tc++);
 
 return 0;
 }
