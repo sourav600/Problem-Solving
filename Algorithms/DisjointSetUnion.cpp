@@ -29,14 +29,12 @@ void Union(int a, int b){
     a = find(a);
     b = find(b);
     if(a!=b){
-        if(size[a]<size[b]) {
-            parent[a]=b;
-            size[b]+=size[a];
-        }
-        else {
-            parent[b]=a;
-            size[a]+=size[b];
-        }
+        if(size[a]<size[b])
+            swap(a,b);
+
+        parent[b]=a;
+        size[a]+=size[b];
+
     }
 }
 
@@ -45,8 +43,6 @@ int main(){
     // freopen("../Input.txt", "r", stdin);
     // freopen("../Output.txt", "w", stdout);
     // #endif
-
-
 
 return 0;
 }
