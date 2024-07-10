@@ -16,24 +16,24 @@ const ll INF = 1e9 + 7;
 const ll N = 1e5 + 10;
 
 int parent[N];
-int size[N];
+int sz[N];
 void make(int a){
     parent[a] = a;
-    size[a]=1;
+    sz[a]=1;
 }
 int find(int a){
     if(a==parent[a]) return a;
-    return parent[a] = find(parent[a]);
+    return find(parent[a]);
 }
 void Union(int a, int b){
     a = find(a);
     b = find(b);
     if(a!=b){
-        if(size[a]<size[b])
+        if(sz[a]<sz[b])
             swap(a,b);
 
         parent[b]=a;
-        size[a]+=size[b];
+        sz[a]+=sz[b];
 
     }
 }
@@ -43,6 +43,15 @@ int main(){
     // freopen("../Input.txt", "r", stdin);
     // freopen("../Output.txt", "w", stdout);
     // #endif
-
+    for(int i=1; i<=10; ++i) make(i);
+    Union(1,4);
+    Union(2,7);
+    Union(7,10);
+    Union(4,6);
+    Union(10,9);
+    Union(4,7);
+    parent[1]=1;
+    for(int i=1; i<=10; ++i) cout<<parent[i]<<nl;
+        cout<<find(4);
 return 0;
 }
