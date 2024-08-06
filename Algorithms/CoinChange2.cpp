@@ -50,8 +50,8 @@ int main(){
     ios::sync_with_stdio(false);cin.tie(0);cout.tie(0);
 
     memset(dp,-1, sizeof(dp));
-    vector<int> coins = {1,2,5};
-    cout<<func(coins.size()-1, 3, coins)<<nl;
+    vector<int> coins = {2,3,5};
+    cout<<func(coins.size()-1, 9, coins)<<nl;
 
 return 0;
 }
