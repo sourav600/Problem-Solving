@@ -36,35 +36,35 @@ void Union(int a,int b){
 }
 
 int main(){
-    // #ifndef ONLINE_JUDGE
-    // freopen("../Input.txt", "r", stdin);
-    // freopen("../Output.txt", "w", stdout);
-    // #endif
+    #ifndef ONLINE_JUDGE
+    freopen("../Input.txt", "r", stdin);
+    freopen("../Output.txt", "w", stdout);
+    #endif
 
     int t; cin>>t;
-    while(t--){
-    int v,e,mn_cost=0;
-    cin>>v>>e;
-    vector<pair<int, pair<int,int> > > edges;
-    int v1,v2,wt;
-    For(i,e){
-        cin>>v1>>v2>>wt;
-        edges.push_back({wt,{v1,v2}});
-    }
-    sort(edges.begin(), edges.end());
-    for(int i=1; i<=v;++i) make(i);
+        while(t--){
+        int v,e,mn_cost=0;
+        cin>>v>>e;
+        vector<pair<int, pair<int,int> > > edges;
+        int v1,v2,wt;
+        For(i,e){
+            cin>>v1>>v2>>wt;
+            edges.push_back({wt,{v1,v2}});
+        }
+        sort(edges.begin(), edges.end());
+        for(int i=1; i<=v;++i) make(i);
 
-    for(auto &edge : edges){
-        int dis = edge.first;
-        int u = edge.second.first;
-        int v = edge.second.second;
-        if(find(u)==find(v)) continue;
-        Union(u,v);
-        //cout<<u<<" "<<v<<nl;
-        mn_cost+=dis;
+        for(auto &edge : edges){
+            int dis = edge.first;
+            int u = edge.second.first;
+            int v = edge.second.second;
+            if(find(u)==find(v)) continue;
+            Union(u,v);
+            //cout<<u<<" "<<v<<nl;
+            mn_cost+=dis;
+        }
+        cout<<mn_cost<<nl;
     }
-    cout<<mn_cost<<nl;
-}
 
 
 return 0;

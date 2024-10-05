@@ -15,7 +15,6 @@ typedef unsigned long ulong;
 const ll INF = 1e9 + 7;
 const ll N = 1e5 + 10;
 
-
 vi dis(N,INF);
 vpp g[N];
 
@@ -60,8 +59,8 @@ int main(){
         cin>>v1>>v2>>w;
         g[v1].push_back({v2,w} ); //weighted graph
     }
-    dijkstra(1);
-    for(int i=1; i<=v;++i) cout<<dis[i]<<" ";
+    dijkstra(0);
+    for(int i=0; i<v;++i) cout<<dis[i]<<" ";
 
 return 0;
 }

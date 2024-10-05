@@ -31,12 +31,12 @@ ll mod(ll a){ return ((a%M)+M)%M;}
 
 int dp[N];
 int func(int val, vector<int>& coins){
-    if(val==0) return 0;
+    if(val<=0) return 0;
     if(dp[val]!=-1) return dp[val];
     int ans = INT_MAX;
+
     for(int coin: coins){
-        if(val-coin >= 0)
-            ans = min(ans+0LL, func(val-coin, coins)+1LL );
+        ans = min(ans+0LL, func(val-coin, coins)+1LL );
     }
     return dp[val] = ans;
 }
@@ -49,8 +49,8 @@ int main(){
     ios::sync_with_stdio(false);cin.tie(0);cout.tie(0);
 
     memset(dp,-1, sizeof(dp));
-    vector<int> coins = {1,2,5};
-    int ans = func(11, coins);
+    vector<int> coins = {500,1000,2000};
+    int ans = func(1500, coins);
     cout<<(ans==INT_MAX? -1 : ans)<<nl;
 
 return 0;
